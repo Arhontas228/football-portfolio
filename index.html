@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио — Андрей Панин</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Верхнее меню */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        /* Главный контейнер */
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Заголовок страницы */
+        .page-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        /* Карточки */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .card-content {
+            padding: 40px;
+        }
+
+        /* --- ИСПРАВЛЕННЫЙ БЛОК С КАРТИНКАМИ --- */
+        .image-wrapper {
+            width: 100%;
+            /* Убрали жесткую высоту, чтобы картинка была видна целиком */
+            background-color: #f0f0f0; 
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto; /* Картинка подстраивается под свои пропорции */
+            display: block; /* Убирает лишние отступы снизу */
+            /* object-fit: cover; -- УБРАЛИ, чтобы не обрезало */
+        }
+
+        /* Текст */
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        p {
+            color: #4a4a4a;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        /* Списки для экипировки */
+        .kit-list {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+
+        .kit-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #4a4a4a;
+            font-size: 16px;
+        }
+
+        .kit-list li::before {
+            content: "⚽";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 14px;
+        }
+        
+        .kit-list strong {
+            color: #1a1a1a;
+        }
+
+        /* Блок с контактами */
+        .contact-info {
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .contact-item .icon {
+            color: #e74c3c;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .contact-item a {
+            color: #1a1a1a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .contact-item a:hover {
+            border-bottom-color: #1a1a1a;
+        }
+
+        /* Подвал */
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <div>Портфолио домашнее</div>
+        <div class="nav-links">
+            <a href="#about">Обо мне</a>
+            <a href="#works">Мои работы</a>
+            <a href="#kit">Экипировка</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Портфолио домашнее</h1>
+
+        <!-- Карточка 1: Обо мне -->
+        <div class="card" id="about">
+            <div class="image-wrapper">
+                <img src="image.jpeg" alt="Футбол">
+            </div>
+            <div class="card-content">
+                <h2>Обо мне</h2>
+                <p>Привет! Меня зовут <strong>Андрей Панин Андреевич</strong>. Я увлекаюсь футболом с раннего детства.</p>
+                <p>Это пространство, где мои увлечения становятся частью моей жизни. Здесь я собираю свои футбольные моменты: от дворовых матчей до серьезных турниров.</p>
+            </div>
+        </div>
+
+        <!-- Карточка 2: Мои работы -->
+        <div class="card" id="works">
+            <div class="image-wrapper">
+                <img src="image (1).jpeg" alt="Футбольный матч">
+            </div>
+            <div class="card-content">
+                <h2>Мои футбольные достижения</h2>
+                <p>Здесь собраны мои любимые моменты. Каждый из них — это история, эмоции и вдохновение.</p>
+                <p>«Победный гол» — один из моих первых серьезных матчей, где я забил решающий мяч в финале районного турнира.</p>
+            </div>
+        </div>
+
+        <!-- Карточка 3: Экипировка -->
+        <div class="card" id="kit">
+            <div class="image-wrapper">
+                <img src="1-13-1536x864.jpg" alt="Футбольная экипировка">
+            </div>
+            <div class="card-content">
+                <h2>Что надеть на матч (по правилам)</h2>
+                <p>Футбол — это спорт с четкими правилами, и экипировка здесь играет важную роль. Вот что обязательно должно быть на вас, чтобы выйти на поле:</p>
+                
+                <ul class="kit-list">
+                    <li><strong>Футболка (джерси):</strong> Обязательно с длинными или короткими рукавами. Если играете двусторонку, лучше иметь разные цвета (например, красную и синюю), чтобы судья и игроки вас не путали.</li>
+                    <li><strong>Шорты:</strong> Специальные футбольные шорты, которые не сковывают движения.</li>
+                    <li><strong>Гетры (щитки):</strong> <em>Обязательный элемент!</em> По правилам, щитки должны быть полностью закрыты гетрами. Без них играть запрещено (это защита от травм).</li>
+                    <li><strong>Бутсы (сороконожки):</strong> Обувь с шипами. Выбор шипов зависит от покрытия: <br>— <em>Сороконожки (FG/SG)</em> для натурального газона.<br>— <em>Литые (Turf)</em> для искусственного поля.<br>— <em>Футзалки</em> для зала.</li>
+                    <li><strong>Вратарская экипировка:</strong> Если вы вратарь, вам нужны перчатки (обязательно), а также форма, которая по цвету отличается от формы полевых игроков и судьи.</li>
+                </ul>
+                
+                <p style="margin-top: 20px; font-size: 14px; color: #888;"><strong>Важно:</strong> Снимать футболку во время матча (даже в честь гола) — это желтая карточка по правилам ФИФА!</p>
+            </div>
+        </div>
+
+        <!-- Карточка 4: Контакты -->
+        <div class="card" id="contacts">
+            <div class="card-content">
+                <h2>Мои контакты</h2>
+                <p>Есть вопросы по футболу, предложения о совместной игре или просто хотите пообщаться? Напишите или позвоните мне — я всегда на связи.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <a href="mailto:jsjsyshsdhsysh@gmail.com">jsjsyshsdhsysh@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon" style="color: #3498db;">📞</span>
+                        <a href="tel:+79693498663">+7 969 349 86 63</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Работает на платформе Publii
+        </div>
+    </div>
+
+</body>
+</html>
