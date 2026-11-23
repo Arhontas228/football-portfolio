@@ -14,10 +14,40 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1a1a1a;
+            background-color: #f4f7f6; 
+            color: #333;
             line-height: 1.6;
             padding-bottom: 60px;
+            background-image: radial-gradient(#e0e6e3 1px, transparent 1px);
+            background-size: 20px 20px;
+            
+            /* ВАЖНО: чтобы мячи по бокам не создавали горизонтальную прокрутку */
+            overflow-x: hidden; 
+            position: relative;
+        }
+
+        /* --- ДЕКОРАТИВНЫЕ МЯЧИ ПО БОКАМ --- */
+        .bg-ball {
+            position: fixed; /* Мячи зафиксированы на экране при прокрутке */
+            font-size: 120px;
+            opacity: 0.08; /* Делаем их полупрозрачными, чтобы не отвлекали */
+            z-index: -1; /* Отправляем на задний план */
+            user-select: none;
+            pointer-events: none; /* Чтобы нельзя было выделить или нажать */
+            animation: float 6s ease-in-out infinite; /* Плавная анимация */
+        }
+
+        /* Позиции мячей */
+        .ball-1 { top: 15%; left: 5%; transform: rotate(-20deg); animation-delay: 0s; }
+        .ball-2 { top: 45%; right: 5%; transform: rotate(35deg); animation-delay: 1s; font-size: 150px; }
+        .ball-3 { bottom: 10%; left: 10%; transform: rotate(15deg); animation-delay: 2s; font-size: 90px; }
+        .ball-4 { top: 75%; right: 15%; transform: rotate(-45deg); animation-delay: 3s; font-size: 80px; }
+
+        /* Анимация покачивания */
+        @keyframes float {
+            0% { margin-top: 0px; }
+            50% { margin-top: -20px; }
+            100% { margin-top: 0px; }
         }
 
         /* Верхнее меню */
@@ -26,23 +56,40 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            font-size: 14px;
-            color: #666;
+            font-size: 15px;
+            font-weight: 500;
+            background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+            color: #d8f3dc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 15px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #666;
-            transition: color 0.2s;
+            color: #d8f3dc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #000;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            transform: translateY(-2px);
         }
 
         /* Главный контейнер */
@@ -50,42 +97,62 @@
             max-width: 700px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 10; /* Контент выше фона */
         }
 
         /* Заголовок страницы */
         .page-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin: 40px 0 20px 0;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eaeaea;
+            font-size: 38px;
+            font-weight: 800;
+            margin: 50px 0 30px 0;
+            color: #1b4332;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 5px;
+            background: #40916c;
+            border-radius: 3px;
         }
 
         /* Карточки */
         .card {
             background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(27, 67, 50, 0.08);
+            margin-bottom: 40px;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ece9;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(27, 67, 50, 0.15);
         }
 
         .card-content {
             padding: 40px;
         }
 
-        /* --- ИСПРАВЛЕННЫЙ БЛОК С КАРТИНКАМИ --- */
+        /* Блок с картинками */
         .image-wrapper {
             width: 100%;
-            /* Убрали жесткую высоту, чтобы картинка была видна целиком */
             background-color: #f0f0f0; 
+            position: relative;
         }
 
         .image-wrapper img {
             width: 100%;
-            height: auto; /* Картинка подстраивается под свои пропорции */
-            display: block; /* Убирает лишние отступы снизу */
-            /* object-fit: cover; -- УБРАЛИ, чтобы не обрезало */
+            height: auto; 
+            display: block; 
         }
 
         /* Текст */
@@ -93,7 +160,15 @@
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 20px;
-            color: #000;
+            color: #1b4332;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: "⚽";
+            font-size: 24px;
         }
 
         p {
@@ -110,27 +185,35 @@
 
         .kit-list li {
             margin-bottom: 12px;
-            padding-left: 30px;
+            padding: 12px 15px 12px 45px;
             position: relative;
             color: #4a4a4a;
             font-size: 16px;
+            background: #f8fbf9;
+            border-radius: 10px;
+            border-left: 4px solid #74c69d;
         }
 
         .kit-list li::before {
-            content: "⚽";
+            content: "✔";
             position: absolute;
-            left: 0;
-            top: 2px;
-            font-size: 14px;
+            left: 15px;
+            top: 14px;
+            color: #2d6a4f;
+            font-weight: bold;
+            font-size: 16px;
         }
         
         .kit-list strong {
-            color: #1a1a1a;
+            color: #1b4332;
         }
 
         /* Блок с контактами */
         .contact-info {
             margin-top: 25px;
+            background: #f8fbf9;
+            padding: 20px;
+            border-radius: 12px;
         }
 
         .contact-item {
@@ -141,41 +224,78 @@
             color: #333;
         }
 
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
         .contact-item .icon {
             color: #e74c3c;
-            margin-right: 10px;
-            font-size: 18px;
+            margin-right: 15px;
+            font-size: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .contact-item a {
             color: #1a1a1a;
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
         .contact-item a:hover {
-            border-bottom-color: #1a1a1a;
+            color: #2d6a4f;
         }
 
         /* Подвал */
         .footer {
             text-align: center;
             font-size: 14px;
-            color: #888;
+            color: #6c757d;
             margin-top: 60px;
             padding-top: 20px;
-            border-top: 1px solid #eaeaea;
+            border-top: 1px solid #dee2e6;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Адаптив */
+        @media (max-width: 600px) {
+            .top-nav {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .card-content {
+                padding: 25px;
+            }
+            .page-title {
+                font-size: 30px;
+            }
+            /* Скрываем большие мячи на телефонах, чтобы не мешали */
+            .bg-ball { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Декоративные мячи на фоне -->
+    <div class="bg-ball ball-1">⚽</div>
+    <div class="bg-ball ball-2">⚽</div>
+    <div class="bg-ball ball-3">⚽</div>
+    <div class="bg-ball ball-4">⚽</div>
+
     <div class="top-nav">
-        <div>Портфолио домашнее</div>
+        <div class="logo-text">⚽ Football Portfolio</div>
         <div class="nav-links">
             <a href="#about">Обо мне</a>
-            <a href="#works">Мои работы</a>
+            <a href="#works">Достижения</a>
             <a href="#kit">Экипировка</a>
             <a href="#contacts">Контакты</a>
         </div>
@@ -187,6 +307,7 @@
         <!-- Карточка 1: Обо мне -->
         <div class="card" id="about">
             <div class="image-wrapper">
+                <!-- Убедитесь, что картинка лежит в папке images -->
                 <img src="image.jpeg" alt="Футбол">
             </div>
             <div class="card-content">
@@ -214,7 +335,7 @@
                 <img src="1-13-1536x864.jpg" alt="Футбольная экипировка">
             </div>
             <div class="card-content">
-                <h2>Что надеть на матч (по правилам)</h2>
+                <h2>Что надеть на матч</h2>
                 <p>Футбол — это спорт с четкими правилами, и экипировка здесь играет важную роль. Вот что обязательно должно быть на вас, чтобы выйти на поле:</p>
                 
                 <ul class="kit-list">
